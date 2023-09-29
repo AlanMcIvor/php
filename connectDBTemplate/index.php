@@ -5,5 +5,3 @@
     include 'partials/footer.php';
 ?>
 
-
-

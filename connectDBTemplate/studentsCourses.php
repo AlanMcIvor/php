@@ -1,17 +1,20 @@
 <?php
-// querying the tables to return information about the student and the course that they are enrolled on
-//  $students = $conn->prepare('SELECT
-//  s.student_id,
-//  s.student_name,
-//  s.dob,
-//  e.enrolment_date,
-//  c.course_id,
-//  c.course_name
-// FROM enrolment e
-// -- joining all the tables (relationships)
-// INNER JOIN student s ON e.fk_student = s.student_id
-// INNER JOIN course c ON e.fk_course = c.course_id;
-// ');
+
+include 'config/dbConfig.php';
+include 'partials/header.php';
+
+$students = $conn->prepare('SELECT
+ s.student_id,
+ s.student_name,
+ s.dob,
+ e.enrolment_date,
+ c.course_id,
+ c.course_name
+FROM enrolment e
+-- joining all the tables (relationships)
+INNER JOIN student s ON e.fk_student = s.student_id
+INNER JOIN course c ON e.fk_course = c.course_id;
+');
 
 
 $students->execute();
@@ -40,3 +43,9 @@ $students->bind_result($studentId, $studentName, $dob, $enrolDate, $courseId, $c
     <?php endwhile ?>
   </tbody>
 </table>
+
+<?php
+
+    include 'partials/footer.php';
+
+?>

@@ -5,5 +5,5 @@
     include 'partials/footer.php';
 ?>
 
-hello world
+
 
